@@ -1,0 +1,20 @@
+         .MODEL SMALL
+.STACK 100H
+.DATA
+ARR DB 1 DUP(?)
+.CODE
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+
+    MOV DI, OFFSET ARR
+    MOV BYTE PTR [DI], 'X'
+
+    MOV DL, [DI]
+    MOV AH, 2
+    INT 21H
+
+    MOV AH, 4CH
+    INT 21H
+MAIN ENDP
+END MAIN
